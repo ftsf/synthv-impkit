@@ -7,8 +7,8 @@ I use the following bindings:
 
 ```markdown
  * Add Note       - A
- * Add +          - + key
- * Add -          - = key
+ * Add +          - = key
+ * Add -          - - key
  * Add Breaths    - B (adds breaths "br" before selected notes if there's space)
  * Backspace Note - Backspace
  * Lengthen Note  - Shift + Cursor Right
