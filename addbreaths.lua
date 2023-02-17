@@ -21,26 +21,31 @@ function main()
         sel:clearAll()
         for i=1, #notes do
             local note = notes[i]
-            local group = note:getParent()
-            local i = note:getIndexInParent()
+            if note:getLyrics() ~= "br" then -- don't add breaths before breaths
+                local group = note:getParent()
+                local i = note:getIndexInParent()
 
-            local duration = SV.QUARTER
+                local duration = SV.QUARTER
 
-            if i > 1 then
-                local prevNote = group:getNote(i-1)
-                if prevNote ~= nil then
-                    duration = note:getOnset() - prevNote:getEnd()
+                if i > 1 then
+                    local prevNote = group:getNote(i-1)
+                    if prevNote ~= nil then
+                        duration = note:getOnset() - prevNote:getEnd()
+                        if duration > SV.QUARTER then
+                            duration = SV.QUARTER
+                        end
+                    end
                 end
-            end
 
-            if duration > 0 then
-                local newNote = SV:create("Note")
-                newNote:setOnset(note:getOnset() - duration)
-                newNote:setPitch(note:getPitch())
-                newNote:setDuration(duration)
-                newNote:setLyrics("br")
-                group:addNote(newNote)
-                sel:selectNote(newNote)
+                if duration > 0 then
+                    local newNote = SV:create("Note")
+                    newNote:setOnset(note:getOnset() - duration)
+                    newNote:setPitch(note:getPitch())
+                    newNote:setDuration(duration)
+                    newNote:setLyrics("br")
+                    group:addNote(newNote)
+                    sel:selectNote(newNote)
+                end
             end
         end
     end

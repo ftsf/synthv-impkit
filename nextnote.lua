@@ -25,6 +25,17 @@ function main()
                 sel:clearAll()
                 sel:selectNote(newNote)
             end
+        else
+            -- select first note
+            local group = SV:getMainEditor():getCurrentGroup():getTarget()
+            if group then
+                local nNotes = group:getNumNotes()
+                if nNotes > 0 then
+                    local note = group:getNote(1)
+                    sel:clearAll()
+                    sel:selectNote(note)
+                end
+            end
         end
     end
     SV:finish()

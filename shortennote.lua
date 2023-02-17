@@ -16,9 +16,17 @@ function main()
     local sel = SV:getMainEditor():getSelection()
     if sel ~= nil then
         local notes = sel:getSelectedNotes()
-        if #notes > 0 then
-            local lastSelectedNote = notes[#notes]
-            lastSelectedNote:setDuration(lastSelectedNote:getDuration()/2)
+        for i=1, #notes do
+            -- shorten note
+            local note = notes[i]
+            local nextNote = nil
+            if i+1 <= #notes and notes[i+1]:getOnset() == notes[i]:getEnd() then
+                nextNote = notes[i+1]
+            end
+            note:setDuration(note:getDuration()/2)
+            if nextNote ~= nil then
+                nextNote:setOnset(note:getEnd())
+            end
         end
     end
     SV:finish()

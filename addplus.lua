@@ -1,6 +1,6 @@
 function getClientInfo()
     return {
-        name = "Add Note",
+        name = "Add Plus",
         author = "impbox",
         versionNumber = 1,
         minEditorVersion = 0
@@ -26,22 +26,20 @@ function main()
             note:setOnset(lastNote:getEnd())
             note:setPitch(lastNote:getPitch())
             note:setDuration(lastNote:getDuration())
-            note:setLyrics(lastNote:getLyrics())
+            note:setLyrics("+")
             group:addNote(note)
             sel:clearAll()
             sel:selectNote(note)
         else
             local group = SV:getMainEditor():getCurrentGroup()
-            if group then
-                local note = SV:create("Note")
-                note:setOnset(group:getEnd())
-                note:setPitch(60)
-                note:setDuration(SV.QUARTER)
-                note:setLyrics("la")
-                group:getTarget():addNote(note)
-                sel:clearAll()
-                sel:selectNote(note)
-            end
+            local note = SV:create("Note")
+            note:setOnset(group:getEnd())
+            note:setPitch(60)
+            note:setDuration(SV.QUARTER)
+            note:setLyrics("+")
+            group:addNote(note)
+            sel:clearAll()
+            sel:selectNote(note)
         end
     end
     SV:finish()

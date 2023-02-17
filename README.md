@@ -7,6 +7,9 @@ I use the following bindings:
 
 ```markdown
  * Add Note       - A
+ * Add +          - + key
+ * Add -          - = key
+ * Add Breaths    - B (adds breaths "br" before selected notes if there's space)
  * Backspace Note - Backspace
  * Lengthen Note  - Shift + Cursor Right
  * Shorten Note   - Shift + Cursor Left
@@ -14,7 +17,7 @@ I use the following bindings:
  * Move Note Up   - Cursor Up
  * Next Note      - Cursor Right
  * Prev Note      - Cursor Left
- * Add Breaths    - B (adds breaths "br" before selected notes if there's space)
  * Shift up by an octave - Shift + Cursor Up (built-in command)
  * Shift down by an octave - Shift + Cursor Down (built-in command)
+ * Fades out      - F key
 ```
